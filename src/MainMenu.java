@@ -37,8 +37,6 @@ public class MainMenu extends JPanel {
         myPanel = new JPanel();
         myLabel = new JLabel("Test");
 
-
-
         // set background of the enter name menu
         JLabel b = new JLabel(new ImageIcon("background.jpg"));
         b.setDisabledIcon(new ImageIcon("background.jpg"));
@@ -56,33 +54,19 @@ public class MainMenu extends JPanel {
         
         //back.addActionListener(new myActionListenerback());
 
-
-
-
-
-
-
         Container contentPane = myFrame.getContentPane();
         //contentPane.setSize(300,300);
         //myFrame.setSize(800,800);
         //myPanel.setSize(500,500);
         //myLabel.setSize(300,300);
-
-
-        
+      
         myPanel.add(b);
         contentPane.add(myPanel);
 
         myFrame.pack();
         myFrame.setVisible(true);
 
-        // put your code here
 
-    }
-
-    public void paint(Graphics g) {
-
-        g.drawImage(deneme, 0, 0, null);
     }
 
     public static void main(String[] args) {

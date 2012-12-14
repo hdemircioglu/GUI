@@ -19,6 +19,12 @@ public class MovePlayer extends Thread {
     boolean rightKey = false;
     boolean upKey = false;
     boolean downKey = false;
+    
+    public void play(){
+        Thread t = new Thread();
+        t.start();
+    }
+    
 
     public void run() {
         while (true) {
@@ -44,8 +50,8 @@ public class MovePlayer extends Thread {
 
         }
     }
-    //Thread t = new Thread(new MovePlayer.MainLoop());
-    //t.start ();
+    
+    
 
     class MyKeyListener extends KeyAdapter {
 
@@ -82,17 +88,6 @@ public class MovePlayer extends Thread {
                     break;
             }
         }
-
-        public void drawScreen(Graphics display) {
-            // backBuffer.drawImage(background,0,0,null);
-            //backBuffer.drawImage(ball, myBall.getPx(), myBall.getPy(), null);
-            //backBuffer.drawString("CLICK ON SCREEN TO GAIN FOCUS THEN...",0,230);
-            //backBuffer.drawString("press arrow keys to move ball",0,245);
-            //display.drawImage(frontBuffer,0,0,this);
-        }
-
-        public void update(Graphics display) {
-            drawScreen(display);
-        }
+      
     }
 }

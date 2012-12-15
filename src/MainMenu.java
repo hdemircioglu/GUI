@@ -4,13 +4,13 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class MainMenu extends JPanel {
+    
+    MovePlayer mp = new MovePlayer();
 
     private JFrame myFrame;
     private JPanel myPanel;
     private JLabel myLabel;
-    private Image myBackground;
     private Image deneme;
-    ImageIcon image = new ImageIcon("background.jpg");
 
     /**
      * Constructor for objects of class MainMenu
@@ -18,7 +18,6 @@ public class MainMenu extends JPanel {
     public MainMenu() {
         // initialise instance variables
         makeFrame();
-
     }
 
     /**
@@ -46,14 +45,21 @@ public class MainMenu extends JPanel {
 
         // create,add and set the features of back button
 
-        JButton back = new JButton(new ImageIcon("adamDurgun.gif"));
-        myFrame.add(back);
+        //JLabel back = new JLabel(new ImageIcon("adamDurgun.gif"));
+        
+        myFrame.add(mp.playerLabel);
+        myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mp.playerLabel.setLocation(100,630);
+        mp.playerLabel.setVisible(true);
+        /*
         back.setSize(37, 50);
         back.setLocation(100, 630);
         back.setVisible(true);
         
         //back.addActionListener(new myActionListenerback());
 
+        */
+        
         Container contentPane = myFrame.getContentPane();
         //contentPane.setSize(300,300);
         //myFrame.setSize(800,800);
@@ -66,13 +72,12 @@ public class MainMenu extends JPanel {
         myFrame.pack();
         myFrame.setVisible(true);
 
-
     }
 
     public static void main(String[] args) {
+        MovePlayer mp2 = new MovePlayer();
+        mp2.play();
         MainMenu main = new MainMenu();
-
-
-        // TODO code application logic here
+       // TODO code application logic here
     }
 }

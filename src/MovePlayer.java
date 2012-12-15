@@ -6,19 +6,33 @@ import javax.swing.JLabel;
 
 public class MovePlayer extends Thread {
 
+    
     public static final int WIDTH = 250;
     public static final int HEIGHT = 250;
-    Graphics backBuffer;
-    Image frontBuffer;
+    
     Image background;
-    Player myPlayer = new Player(50, 50, 5);
-    ImageIcon playerIcon = new ImageIcon("background.jpg");
-    JLabel playerLabel = new JLabel(new ImageIcon("adamDurgun.gif"));
-    Dimension appletSize;
+    Player myPlayer;
+    //ImageIcon playerIcon = new ImageIcon("background.jpg");
+    JLabel playerLabel;
     boolean leftKey = false;
     boolean rightKey = false;
     boolean upKey = false;
     boolean downKey = false;
+    
+    Dimension appletSize;
+    
+    
+    public MovePlayer()
+    {
+        MyKeyListener myKey = new MyKeyListener();
+        
+        //bura onemli
+        //addKeyListener(new MyKeyListener());
+        //myKey.addKeyListener(new MyKeyListener());
+        playerLabel = new JLabel(new ImageIcon("adamDurgun.gif"));
+        myPlayer = new Player(50, 50, 5);
+    
+    }
     
     public void play(){
         Thread t = new Thread();
@@ -51,8 +65,6 @@ public class MovePlayer extends Thread {
         }
     }
     
-    
-
     class MyKeyListener extends KeyAdapter {
 
         public void keyPressed(KeyEvent e) {

@@ -1,16 +1,35 @@
 
+import javax.swing.JLabel;
+
+
 public class Player {
 
     private int px;
     private int py;
     private int speed;
-    private int width;
+    private JLabel playerLabel;
 
-    public Player(int px, int py, int speed) {
+    public Player(int px, int py, int speed, JLabel playerLabel) {
         this.px = px;
         this.py = py;
         this.speed = speed;
-        this.width = 50;
+        this.playerLabel = playerLabel;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public JLabel getPlayerLabel() {
+        return playerLabel;
+    }
+
+    public void setImageText(JLabel playerLabel) {
+        this.playerLabel = playerLabel;
     }
 
     public int getPx() {
@@ -30,10 +49,10 @@ public class Player {
     }
 
     public void moveDown() {
-        if ((py + width + speed) < 250) {
+        if ((py + speed) < 250) {
             py += speed;
-        } else if ((py + width) < 250) {
-            py += (250 - (py + width));
+        } else if ((py ) < 250) {
+            py += (250 - (py));
         }
     }
 
@@ -46,10 +65,10 @@ public class Player {
     }
 
     public void moveRight() {
-        if ((px + width + speed) < 250) {
+        if ((px + speed) < 250) {
             px += speed;
-        } else if ((px + width) < 250) {
-            px += (250 - (px + width));
+        } else if ((px) < 250) {
+            px += (250 - (px));
         }
     }
 }

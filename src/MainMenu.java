@@ -3,14 +3,13 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class MainMenu extends JPanel {
+public class MainMenu extends JFrame implements KeyListener{
     
-    MovePlayer mp = new MovePlayer();
+    private JFrame mainFrame;
+    private JLabel background, player, player2;
+    private static Player playerObj;
+    private GameEngine ge;
 
-    private JFrame myFrame;
-    private JPanel myPanel;
-    private JLabel myLabel;
-    private Image deneme;
 
     /**
      * Constructor for objects of class MainMenu
@@ -19,65 +18,108 @@ public class MainMenu extends JPanel {
         // initialise instance variables
         makeFrame();
     }
+    
+    
+    public Player getPlayerObj() {
+        return playerObj;
+    }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param y a sample parameter for a method
-     * @return the sum of x and y
-     */
+    public void setPlayerObj(Player playerObj) {
+        this.playerObj = playerObj;
+    }
+
+
     public void makeFrame() {
 
-        deneme = new ImageIcon("background.jpg").getImage();
 
-        //Program exits when the frame closes
-        //myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        myFrame = new JFrame("Brighton Nights");
-        myPanel = new JPanel();
-        myLabel = new JLabel("Test");
-
+        mainFrame = new JFrame("Brighton Nights");
+        
+        Container contentPane = mainFrame.getContentPane();
+        contentPane.setBounds(0,0,1024,768);
+               
         // set background of the enter name menu
-        JLabel b = new JLabel(new ImageIcon("background.jpg"));
-        b.setDisabledIcon(new ImageIcon("background.jpg"));
-        b.setEnabled(false);
-        b.setLocation(0, 0);
-        b.setBounds(0, 0, 1024, 768);
+        background = new JLabel(new ImageIcon("background.jpg"));
+        background.setBounds(0, 0, 1024, 768);
 
-        // create,add and set the features of back button
-
-        //JLabel back = new JLabel(new ImageIcon("adamDurgun.gif"));
         
-        myFrame.add(mp.playerLabel);
-        myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mp.playerLabel.setLocation(100,630);
-        mp.playerLabel.setVisible(true);
-        /*
-        back.setSize(37, 50);
-        back.setLocation(100, 630);
-        back.setVisible(true);
+        player = new JLabel(new ImageIcon("adamDurgun.gif"));
+        player.setBounds(100,100,37,50);
+        playerObj = new Player(100,100,5,player);
+        ge = new GameEngine(playerObj);
         
+        
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        
+        contentPane.add(background);
+        background.add(player);
+                
         //back.addActionListener(new myActionListenerback());
-
-        */
-        
-        Container contentPane = myFrame.getContentPane();
-        //contentPane.setSize(300,300);
-        //myFrame.setSize(800,800);
-        //myPanel.setSize(500,500);
-        //myLabel.setSize(300,300);
+        mainFrame.addKeyListener(this);     
       
-        myPanel.add(b);
-        contentPane.add(myPanel);
-
-        myFrame.pack();
-        myFrame.setVisible(true);
+        mainFrame.pack();
+        mainFrame.setVisible(true);
 
     }
 
     public static void main(String[] args) {
-        MovePlayer mp2 = new MovePlayer();
-        mp2.play();
         MainMenu main = new MainMenu();
        // TODO code application logic here
     }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        switch (e.getKeyCode()) {
+                case KeyEvent.VK_LEFT:
+                    GameEngine.leftKey = true;
+                    System.out.println("Heyy");
+                    
+                    player2 = new JLabel(new ImageIcon("adamHareketli.gif"));
+                    //player.setBounds(100,100,37,50);
+                    
+                    ge = new GameEngine(playerObj);
+                    ge.start();
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    GameEngine.rightKey = true;
+                    ge.start();
+                    break;
+                case KeyEvent.VK_UP:
+                    GameEngine.upKey = true;
+                    ge.start();
+                    break;
+                case KeyEvent.VK_DOWN:
+                    GameEngine.downKey = true;
+                    ge.start();
+                    break;
+            }
+        
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        switch (e.getKeyCode()) {
+                case KeyEvent.VK_LEFT:
+                    GameEngine.leftKey = false;
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    GameEngine.rightKey = false;
+                    break;
+                case KeyEvent.VK_UP:
+                    GameEngine.upKey = false;
+                    break;
+                case KeyEvent.VK_DOWN:
+                    GameEngine.downKey = false;
+                    break;
+            }
+        
+    }
+    
+
+       
 }

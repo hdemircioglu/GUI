@@ -8,12 +8,15 @@ public class Player {
     private int py;
     private int speed;
     private JLabel playerLabel;
+    
+    
 
     public Player(int px, int py, int speed, JLabel playerLabel) {
-        this.px = px;
-        this.py = py;
         this.speed = speed;
+        this.px = playerLabel.getX();
+        this.py = playerLabel.getY();
         this.playerLabel = playerLabel;
+        
     }
 
     public int getSpeed() {
@@ -28,7 +31,7 @@ public class Player {
         return playerLabel;
     }
 
-    public void setImageText(JLabel playerLabel) {
+    public void setPlayerLabel(JLabel playerLabel) {
         this.playerLabel = playerLabel;
     }
 
@@ -46,29 +49,34 @@ public class Player {
         } else if (py > 0) {
             py -= py;
         }
+        playerLabel.setLocation(px, py);
     }
 
     public void moveDown() {
-        if ((py + speed) < 250) {
+        if ((py + speed) < 768) {
             py += speed;
-        } else if ((py ) < 250) {
-            py += (250 - (py));
+        } else if ((py ) < 768) {
+            py += (768 - (py));
         }
+        playerLabel.setLocation(px, py);
     }
 
     public void moveLeft() {
         if ((px - speed) > 0) {
             px -= speed;
+            
         } else if (px > 0) {
             px -= (px);
         }
+        playerLabel.setLocation(px, py);
     }
 
     public void moveRight() {
-        if ((px + speed) < 250) {
+        if ((px + speed) < 1024) {
             px += speed;
-        } else if ((px) < 250) {
-            px += (250 - (px));
+        } else if ((px) < 1024) {
+            px += (1024 - (px));
         }
+        playerLabel.setLocation(px, py);
     }
 }

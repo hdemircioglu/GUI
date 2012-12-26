@@ -6,8 +6,8 @@ import javax.swing.*;
 public class MainMenu extends JFrame implements KeyListener{
     
     private JFrame mainFrame;
-    private JLabel background, player, player2;
-    private static Player playerObj;
+    private JLabel background, player, newLabel;
+    private Player playerObj;
     private GameEngine ge;
 
 
@@ -44,13 +44,11 @@ public class MainMenu extends JFrame implements KeyListener{
         
         player = new JLabel(new ImageIcon("adamDurgun.gif"));
         player.setBounds(100,100,37,50);
-        playerObj = new Player(100,100,5,player);
+        playerObj = new Player(100,150,0,player);
         ge = new GameEngine(playerObj);
-        
-        
+       
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        
+               
         contentPane.add(background);
         background.add(player);
                 
@@ -66,6 +64,7 @@ public class MainMenu extends JFrame implements KeyListener{
         MainMenu main = new MainMenu();
        // TODO code application logic here
     }
+            
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -76,25 +75,33 @@ public class MainMenu extends JFrame implements KeyListener{
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
                 case KeyEvent.VK_LEFT:
-                    GameEngine.leftKey = true;
-                    System.out.println("Heyy");
-                    
-                    player2 = new JLabel(new ImageIcon("adamHareketli.gif"));
-                    //player.setBounds(100,100,37,50);
-                    
+                    GameEngine.leftKey = true;  
+                    playerObj.setSpeed(1);
+                    playerObj.getPlayerLabel().setIcon(new ImageIcon("adamHareketli.gif"));
                     ge = new GameEngine(playerObj);
                     ge.start();
+                    
+                    //System.out.println("LocationX: "+ playerObj.getPx());
                     break;
                 case KeyEvent.VK_RIGHT:
                     GameEngine.rightKey = true;
+                    playerObj.setSpeed(1);
+                    playerObj.getPlayerLabel().setIcon(new ImageIcon("adamHareketli.gif"));
+                    ge = new GameEngine(playerObj);
                     ge.start();
                     break;
                 case KeyEvent.VK_UP:
                     GameEngine.upKey = true;
+                    playerObj.setSpeed(1);
+                    playerObj.getPlayerLabel().setIcon(new ImageIcon("adamHareketli.gif"));
+                    ge = new GameEngine(playerObj);
                     ge.start();
                     break;
                 case KeyEvent.VK_DOWN:
                     GameEngine.downKey = true;
+                    playerObj.setSpeed(1);
+                    playerObj.getPlayerLabel().setIcon(new ImageIcon("adamHareketli.gif"));
+                    ge = new GameEngine(playerObj);
                     ge.start();
                     break;
             }
@@ -106,15 +113,23 @@ public class MainMenu extends JFrame implements KeyListener{
         switch (e.getKeyCode()) {
                 case KeyEvent.VK_LEFT:
                     GameEngine.leftKey = false;
+                    playerObj.setSpeed(0);
+                    playerObj.getPlayerLabel().setIcon(new ImageIcon("adamDurgun.gif"));
                     break;
                 case KeyEvent.VK_RIGHT:
                     GameEngine.rightKey = false;
+                    playerObj.setSpeed(0);
+                    playerObj.getPlayerLabel().setIcon(new ImageIcon("adamDurgun.gif"));
                     break;
                 case KeyEvent.VK_UP:
                     GameEngine.upKey = false;
+                    playerObj.setSpeed(0);
+                    playerObj.getPlayerLabel().setIcon(new ImageIcon("adamDurgun.gif"));
                     break;
                 case KeyEvent.VK_DOWN:
                     GameEngine.downKey = false;
+                    playerObj.setSpeed(0);
+                    playerObj.getPlayerLabel().setIcon(new ImageIcon("adamDurgun.gif"));
                     break;
             }
         

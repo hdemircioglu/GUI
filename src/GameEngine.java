@@ -1,8 +1,4 @@
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 public class GameEngine extends Thread {
 
@@ -13,17 +9,13 @@ public class GameEngine extends Thread {
      static boolean rightKey = false;
      static boolean upKey = false;
      static boolean downKey = false;
+     int i=0;
     
-
     
     public GameEngine(Player player)
     {
         this.myPlayer = player;
     
-    }
-
-    public void setMyPlayer(Player myPlayer) {
-        this.myPlayer = myPlayer;
     }
     
     public void run() {
@@ -37,7 +29,10 @@ public class GameEngine extends Thread {
             }
             if (leftKey) {
                 myPlayer.moveLeft();
-                System.out.println("working");
+                
+                i=i+1;
+                System.out.println("test:"+i);
+                
             }
             if (rightKey) {
                 myPlayer.moveRight();
@@ -47,7 +42,7 @@ public class GameEngine extends Thread {
                 Thread.sleep(20);
             } catch (InterruptedException ex) {
             }
-
+            
 
         }
     }

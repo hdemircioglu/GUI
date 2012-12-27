@@ -7,16 +7,34 @@ public class Player {
     private int px;
     private int py;
     private int speed;
+    private int width;
+    private int height;    
     private JLabel playerLabel;
     
-    
-
     public Player(int px, int py, int speed, JLabel playerLabel) {
         this.speed = speed;
         this.px = playerLabel.getX();
         this.py = playerLabel.getY();
+        this.width = playerLabel.getWidth(); 
+        this.height = playerLabel.getHeight();
         this.playerLabel = playerLabel;
         
+    }
+    
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
     }
 
     public int getSpeed() {

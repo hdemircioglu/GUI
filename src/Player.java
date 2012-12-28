@@ -97,4 +97,8 @@ public class Player {
         }
         playerLabel.setLocation(px, py);
     }
+    public void enterPressed(){
+        System.out.println("Enter is Pressed");
+        
+    }
 }

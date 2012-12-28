@@ -10,6 +10,7 @@ public class GameEngine extends Thread {
     static boolean rightKey = false;
     static boolean upKey = false;
     static boolean downKey = false;
+    static boolean enterKey = false;
     private boolean running = true;
 
     public GameEngine(Player player) {
@@ -29,14 +30,13 @@ public class GameEngine extends Thread {
             }
             if (leftKey) {
                 myPlayer.moveLeft();
-                int i = 0;
-
-                i = i + 1;
-                System.out.println("test:" + i);
 
             }
             if (rightKey) {
                 myPlayer.moveRight();
+            }
+            if(enterKey){
+                myPlayer.enterPressed();
             }
 
             try {
@@ -48,8 +48,7 @@ public class GameEngine extends Thread {
         }
     }
 
-    public void quit() {
-        System.out.println("Quitting.");
+    public void quit() {       
         running = false;  // Setting running to false ends the loop in run()
         // IUn case the thread is waiting. . .
         interrupt();

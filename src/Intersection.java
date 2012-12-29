@@ -51,20 +51,20 @@ public class Intersection extends Thread{
         if(r.intersects(p))
         {
             if(!flag&&!flag2){              
-                //JOptionPane.showMessageDialog(null,"Bar");
-                JLabel newLabel = new JLabel();
-                newLabel.setText("HEEEEEEY");
-                newLabel.setBounds(0,0,1000,20);
-                newLabel.setVisible(true);
                 System.out.println("Intersect is working");
                 copyVenue1 = new Venue(venue);
                 flag2 = true;
                 
             }
             else{
+                
                 //System.out.println("Daha once geldin");
             } 
             return true;
+                
+            
+            
+            
         }
         else{
             flag = false;

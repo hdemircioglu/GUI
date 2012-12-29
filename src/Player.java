@@ -2,7 +2,7 @@
 import javax.swing.JLabel;
 
 
-public class Player {
+public class Player extends Thread{
 
     private int px;
     private int py;
@@ -10,6 +10,21 @@ public class Player {
     private int width;
     private int height;    
     private JLabel playerLabel;
+    
+    static boolean leftKey = false;
+    static boolean rightKey = false;
+    static boolean upKey = false;
+    static boolean downKey = false;
+    static boolean enterKey = false;
+    private boolean running = true;
+    
+    private static Player myPlayer;
+    
+    public Player(Player player)
+    {
+        this.myPlayer = player;
+        
+    }
     
     public Player(int px, int py, int speed, JLabel playerLabel) {
         this.speed = speed;
@@ -97,8 +112,37 @@ public class Player {
         }
         playerLabel.setLocation(px, py);
     }
-    public void enterPressed(){
-        System.out.println("Enter is Pressed");
-        
+    public void run() {
+        running = true;
+        while (running) {
+            if (upKey) {
+                myPlayer.moveUp();
+            }
+
+            if (downKey) {
+                myPlayer.moveDown();
+            }
+            if (leftKey) {
+                myPlayer.moveLeft();
+
+            }
+            if (rightKey) {
+                myPlayer.moveRight();
+            }
+
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+            }
+
+
+        }
+    }
+
+    public void quit() {       
+        running = false;  // Setting running to false ends the loop in run()
+        // IUn case the thread is waiting. . .
+        interrupt();
     }
 }

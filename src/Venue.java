@@ -1,5 +1,8 @@
 
 import javax.swing.JLabel;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.ArrayList;
 
 /*
  * To change this template, choose Tools | Templates
@@ -15,17 +18,24 @@ public class Venue {
     private int py;
     private int height;
     private int width;
+    private String description;
+    //private HashMap<String, Venue> exits;
+    private ArrayList<Item> items;
+    
     
     public Venue(){
         
     }
     
-    public Venue(int px, int py, JLabel labelVenue){
+    public Venue(JLabel labelVenue, String description){
         this.px = labelVenue.getX();
         this.py = labelVenue.getY();
         this.height = labelVenue.getHeight();
         this.width = labelVenue.getWidth();
         this.labelVenue = labelVenue;
+        this.description = description;
+        //exits = new HashMap<String, Venue>();
+        items = new ArrayList<Item>();
         
     }
     
@@ -35,18 +45,11 @@ public class Venue {
         this.height = another.getHeight();
         this.width = another.getWidth();
         this.labelVenue = another.labelVenue;
-        
-        
+            
     }
     
-    public boolean equals(Venue venue1, Venue venue2){
-        if((venue1.px == venue2.px)&&(venue1.py == venue2.py)){
-           return true; 
-        }
-        else
-            return false;
-        
-    }
+    
+    
 
     public int getPx() {
         return px;
@@ -90,5 +93,108 @@ public class Venue {
     private JLabel labelVenue;
     
     
+    public String getDescription()
+    {
+        return description;
     
+    }
+
+    
+    /*
+    //Return description of the Venue's exits
+    public String getExitString()
+    {
+        String returnString = "Exits:";
+        Set<String> keys = exits.keySet();
+        for(String exit: keys){
+            returnString += " " + exit;
+        }
+        return returnString;
+    }
+    * */
+    
+    //Accessor Method
+    /*
+    public Venue getExit(String direction)
+    {
+        return exits.get(direction);
+        
+    }
+    * /
+    
+    
+    public String getLongDescription()
+    {
+        return "You are " + description + ".\n" + getExitString();
+    }
+
+    /**
+     * Define the exits of this room.  Every direction either leads
+     * to another room or is null (no exit there).
+     * @param north The north exit.
+     * @param east The east east.
+     * @param south The south exit.
+     * @param west The west exit.
+     */
+    
+    /*
+    public void setExit(String direction, Venue neighbor) 
+    {
+        uniqueAddDirection(direction);
+        exits.put(direction, neighbor);
+        
+    }
+    */
+    
+
+    
+    public void addItem(Item item)
+    {
+        items.add(item);
+             
+    }
+    
+    /**
+     * Prints items in the Venue.
+     */
+    public void displayItem()
+    {
+        if(items.size()==0)
+        {
+           System.out.println("No item in the venue.");
+        }
+        else
+        {
+            System.out.print("Items in venue: ");
+            for(int i=0; i<items.size(); i++)
+            {
+                System.out.print(items.get(i).getDescription() + " ");
+            }
+            System.out.println();
+        }        
+    }    
+    
+    /**
+     * Checks whether item array is empty or not.
+     */
+    public boolean isEmpty()
+    {
+        if(items.size()==0)
+        {
+           return true;
+        }
+        else
+        {
+            return false;
+        }
+        
+    }
+    
+    public boolean equals(Venue venue1, Venue venue2){
+        if((venue1.px == venue2.px)&&(venue1.py == venue2.py)){
+           return true; 
+        }
+        else
+            return false;
+    }
 }

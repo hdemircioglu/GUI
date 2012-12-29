@@ -6,10 +6,9 @@ import javax.swing.*;
 public class MainMenu extends JFrame implements KeyListener {
 
     private JFrame mainFrame;
-    private JLabel background, player;
+    private JLabel background, topLeftLabel, topRightLabel, topMiddleLabel,
+            southLabel,player;
     private Player playerObj, player1;
-    private GameEngine ge;
-    private Venue venue;
     private Intersection intersection = new Intersection();
     private JLabel churchillSquareLabel, clockTowerLabel, odeonMovieTheatherLabel,
             royalPavillionLabel, busStopLabel, mesmeristLabel, coalitionLabel,
@@ -117,51 +116,108 @@ public class MainMenu extends JFrame implements KeyListener {
         mainFrame = new JFrame("Brighton Nights");
 
         Container contentPane = mainFrame.getContentPane();
-        contentPane.setBounds(0, 0, 1024, 768);
+        contentPane.setBounds(0, 0, 1000, 800);
+        BorderLayout border = new BorderLayout();
+        //BoxLayout box = new BoxLayout();
+        //contentPane.setMaximumSize(1000,800);
+        
+        //contentPane.setLayout(border);
+        
+        contentPane.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        //c.fill = GridBagConstraints.HORIZONTAL;
+        
 
         // set background of the enter name menu
-        background = new JLabel(new ImageIcon("background.jpg"));
-        background.setBounds(0, 0, 1024, 768);
-
+        //background = new JLabel(new ImageIcon("background.jpg"));
+        //background.setBounds(0, 0, 1024, 768);
+        
+        
+        topLeftLabel = new JLabel(new ImageIcon("topLeftLabel.jpg"));
+        //c.fill = GridBagConstraints.HORIZONTAL;
+        //c.anchor = GridBagConstraints.FIRST_LINE_START;
+        c.gridx=0;
+        c.gridy=0;
+        //c.weightx = 0.5;
+        //c.weighty=0.5;
+        contentPane.add(topLeftLabel,c);
+        
+        topMiddleLabel = new JLabel(new ImageIcon("topMiddleLabel.jpg"));
+        //c.fill = GridBagConstraints.HORIZONTAL;
+        
+        c.gridx=1;
+        c.gridy=0;
+        //c.weightx = 0.5;
+        //c.weighty=0.5;
+        contentPane.add(topMiddleLabel,c);
+        
+        topRightLabel = new JLabel(new ImageIcon("topRightLabel.jpg"));
+        //c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx=2;
+        c.gridy=0;
+        //c.weightx = 0.5;
+        //c.weighty=0.5;
+        contentPane.add(topRightLabel,c);
+        
+        background = new JLabel(new ImageIcon("southLabel.jpg"));
+        //c.fill = GridBagConstraints.HORIZONTAL;
+        //c.ipady = 40; 
+        c.gridwidth =3;
+        c.gridx=0;
+        c.gridy=1;
+        //c.weightx = 0.5;
+        //c.weighty=0.5;
+        contentPane.add(background,c);
+        
+        
+        
+        /*
+        contentPane.add(topLeftLabel,border.WEST);
+        contentPane.add(topMiddleLabel,border.CENTER);
+        contentPane.add(topRightLabel,border.EAST);
+        contentPane.add(background,border.SOUTH);
+        */
+        
+        
 
         churchillSquareLabel = new JLabel(new ImageIcon("house.gif"));
-        churchillSquareLabel.setBounds(80, 70, 120, 120);
+        churchillSquareLabel.setBounds(100, 10, 120, 120);
         //churchillSquare = new Venue(churchillSquareLabel,"Welcome to Mesmerist");
 
         clockTowerLabel = new JLabel(new ImageIcon("house.gif"));
-        clockTowerLabel.setBounds(280, 70, 120, 120);
+        clockTowerLabel.setBounds(300, 10, 120, 120);
         //mesmerist = new Venue(clockTowerLabel,"Welcome to Mesmerist");
 
         royalPavillionLabel = new JLabel(new ImageIcon("house.gif"));
-        royalPavillionLabel.setBounds(480, 70, 120, 120);
+        royalPavillionLabel.setBounds(500, 10, 120, 120);
         //mesmerist = new Venue(royalPavillionLabel,"Welcome to Mesmerist");
 
         busStopLabel = new JLabel(new ImageIcon("house.gif"));
-        busStopLabel.setBounds(680, 70, 120, 120);
+        busStopLabel.setBounds(700, 10, 120, 120);
         //mesmerist = new Venue(odeonMovieTheatherLabel,"Welcome to Mesmerist");
 
         odeonMovieTheatherLabel = new JLabel(new ImageIcon("house.gif"));
-        odeonMovieTheatherLabel.setBounds(280, 290, 120, 120);
+        odeonMovieTheatherLabel.setBounds(300, 220, 120, 120);
         //mesmerist = new Venue(mesmeristLabel,"Welcome to Mesmerist");
 
         mesmeristLabel = new JLabel(new ImageIcon("house.gif"));
-        mesmeristLabel.setBounds(480, 290, 120, 120);
+        mesmeristLabel.setBounds(500, 220, 120, 120);
         //mesmerist = new Venue(mesmeristLabel,"Welcome to Mesmerist");
 
         coalitionLabel = new JLabel(new ImageIcon("house.gif"));
-        coalitionLabel.setBounds(280, 510, 120, 120);
+        coalitionLabel.setBounds(300, 430, 120, 120);
         //mesmerist = new Venue(coalitionLabel,"Welcome to Mesmerist");
 
         digitalLabel = new JLabel(new ImageIcon("house.gif"));
-        digitalLabel.setBounds(480, 510, 120, 120);
+        digitalLabel.setBounds(500, 430, 120, 120);
         //mesmerist = new Venue(mesmeristLabel,"Welcome to Mesmerist");
 
         pierLabel = new JLabel(new ImageIcon("house.gif"));
-        pierLabel.setBounds(680, 510, 120, 120);
+        pierLabel.setBounds(700, 430, 120, 120);
         //mesmerist = new Venue(pierLabel,"Welcome to Mesmerist");
 
         seaLabel = new JLabel(new ImageIcon("house.gif"));
-        seaLabel.setBounds(680, 680, 120, 120);
+        seaLabel.setBounds(700, 610, 120, 120);
         //mesmerist = new Venue(seaLabel,"Welcome to Mesmerist");
 
         player = new JLabel(new ImageIcon("adamDurgun.gif"));
@@ -169,9 +225,12 @@ public class MainMenu extends JFrame implements KeyListener {
         playerObj = new Player(100, 150, 0, player);
         player1 = new Player(playerObj);
 
+        //This line makes it sure that program exits when the frame closes
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
 
-        contentPane.add(background);
+        
+        //contentPane.add(background);
         background.add(player);
 
 
@@ -190,6 +249,7 @@ public class MainMenu extends JFrame implements KeyListener {
         //back.addActionListener(new myActionListenerback());
         mainFrame.addKeyListener(this);
 
+        //contentPane.
         mainFrame.pack();
         mainFrame.setVisible(true);
         //ge = new GameEngine();
@@ -201,10 +261,25 @@ public class MainMenu extends JFrame implements KeyListener {
         for (Venue currentVenue : GameEngine.venues) {
             if (intersection.intersectDetection(currentVenue, playerObj)) {
                 if (e.getKeyChar() == '\n') {
-                    JOptionPane.showMessageDialog(null, currentVenue.getDescription());
-                    System.out.println("TEST1: " + currentVenue.getDescription());
+                    JOptionPane pane = new JOptionPane();
+                    pane.showMessageDialog(null, "You are "+
+                            currentVenue.getDescription());
+                    if(currentVenue.hasItem()){
+                        //pane.showMessageDialog(null, );
+                        
+                        //String[] possibilities = new String[]{"ham", "spam", "yam"};
+                        
+                        String s = (String)pane.showInputDialog(mainFrame,"What would you like to drink?","Customized Dialog",
+                    JOptionPane.PLAIN_MESSAGE,null,currentVenue.stringItemArray(),currentVenue.stringItemArray()[0]);
+                        System.out.println(s);
+   
+                    }
+                    //System.out.println("TEST1: " + currentVenue.getDescription());
                 }
 
+            }
+            else{
+                
             }
 
 
@@ -283,5 +358,13 @@ public class MainMenu extends JFrame implements KeyListener {
                 break;
         }
 
+    }
+    
+    public void setTextToLabel(JLabel myLabel, String myString){
+        myLabel.setText(myString);
+        myLabel.setVerticalTextPosition(JLabel.CENTER);
+        myLabel.setHorizontalTextPosition(JLabel.CENTER);;
+        myLabel.setForeground(Color.white);
+        
     }
 }

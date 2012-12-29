@@ -21,6 +21,7 @@ public class Venue {
     private String description;
     //private HashMap<String, Venue> exits;
     private ArrayList<Item> items;
+    private String[] stringItemList;
     
     
     public Venue(){
@@ -47,9 +48,19 @@ public class Venue {
         this.labelVenue = another.labelVenue;
             
     }
+
     
-    
-    
+    public String[] stringItemArray(){
+        int j = 0;
+        int i = items.size();
+        stringItemList = new String[i];
+        for(Item item: items){
+            
+            stringItemList[j]=item.getDescription();
+            j++;
+        }
+        return stringItemList;            
+    }
 
     public int getPx() {
         return px;
@@ -99,6 +110,16 @@ public class Venue {
     
     }
 
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(ArrayList<Item> items) {
+        this.items = items;
+    }
+
+    
+    
     
     /*
     //Return description of the Venue's exits
@@ -177,15 +198,15 @@ public class Venue {
     /**
      * Checks whether item array is empty or not.
      */
-    public boolean isEmpty()
+    public boolean hasItem()
     {
         if(items.size()==0)
         {
-           return true;
+           return false;
         }
         else
         {
-            return false;
+            return true;
         }
         
     }

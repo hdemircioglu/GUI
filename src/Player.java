@@ -10,6 +10,8 @@ public class Player extends Thread{
     private int width;
     private int height;    
     private JLabel playerLabel;
+    private int playerEnergy;
+    private int playerMoney;
     
     static boolean leftKey = false;
     static boolean rightKey = false;
@@ -33,7 +35,25 @@ public class Player extends Thread{
         this.width = playerLabel.getWidth(); 
         this.height = playerLabel.getHeight();
         this.playerLabel = playerLabel;
+        this.playerEnergy = 100;
+        this.playerMoney = 30;
         
+    }
+
+    public int getPlayerEnergy() {
+        return playerEnergy;
+    }
+
+    public void setPlayerEnergy(int playerEnergy) {
+        this.playerEnergy = playerEnergy;
+    }
+
+    public int getPlayerMoney() {
+        return playerMoney;
+    }
+
+    public void setPlayerMoney(int money) {
+        this.playerMoney = money;
     }
     
     public int getWidth() {
@@ -139,6 +159,52 @@ public class Player extends Thread{
 
         }
     }
+    
+     public String spendMoney(int cost)
+    {
+        if(playerMoney<cost)
+        {
+            return "You do not have enough money to buy this Item.";          
+        }
+        else
+        {
+            playerMoney = playerMoney-cost;
+            return "Player's Money: " +getPlayerMoney() + "£";
+        }
+    }
+     
+     public String loseEnergy(){
+        playerEnergy = playerEnergy-20;
+        if(playerEnergy<=0)
+        {
+            
+            return "You do not have energy.";
+        }
+        else
+        {
+            
+            return "Player's Energy: "+ playerEnergy;       
+        }
+        
+    }
+    
+    public String boostEnergy(int energy)
+    {
+        int maxEnergy=100;
+        int energyTemp=playerEnergy+energy;
+        if(maxEnergy<energyTemp)
+        {
+            playerEnergy=100;
+            return "Player's Energy : "+playerEnergy+" Maximum energy!";
+        }
+        else
+        {
+            playerEnergy = playerEnergy+energy;
+            return "Player's Energy: " + getPlayerEnergy();
+        }
+        
+    }
+    
 
     public void quit() {       
         running = false;  // Setting running to false ends the loop in run()

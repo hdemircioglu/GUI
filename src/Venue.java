@@ -8,12 +8,12 @@ import java.util.ArrayList;
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author muratmenevse
  */
 public class Venue {
+
     private int px;
     private int py;
     private int height;
@@ -22,13 +22,11 @@ public class Venue {
     //private HashMap<String, Venue> exits;
     private ArrayList<Item> items;
     private String[] stringItemList;
-    
-    
-    public Venue(){
-        
+
+    public Venue() {
     }
-    
-    public Venue(JLabel labelVenue, String description){
+
+    public Venue(JLabel labelVenue, String description) {
         this.px = labelVenue.getX();
         this.py = labelVenue.getY();
         this.height = labelVenue.getHeight();
@@ -37,29 +35,28 @@ public class Venue {
         this.description = description;
         //exits = new HashMap<String, Venue>();
         items = new ArrayList<Item>();
-        
+
     }
-    
-    public Venue(Venue another){
+
+    public Venue(Venue another) {
         this.px = another.labelVenue.getX();
         this.py = another.labelVenue.getY();
         this.height = another.getHeight();
         this.width = another.getWidth();
         this.labelVenue = another.labelVenue;
-            
+
     }
 
-    
-    public String[] stringItemArray(){
+    public String[] stringItemArray() {
         int j = 0;
         int i = items.size();
         stringItemList = new String[i];
-        for(Item item: items){
-            
-            stringItemList[j]=item.getDescription();
+        for (Item item : items) {
+
+            stringItemList[j] = item.getDescription();
             j++;
         }
-        return stringItemList;            
+        return stringItemList;
     }
 
     public int getPx() {
@@ -102,12 +99,10 @@ public class Venue {
         this.labelVenue = labelVenue;
     }
     private JLabel labelVenue;
-    
-    
-    public String getDescription()
-    {
+
+    public String getDescription() {
         return description;
-    
+
     }
 
     public ArrayList<Item> getItems() {
@@ -118,38 +113,34 @@ public class Venue {
         this.items = items;
     }
 
-    
-    
-    
     /*
-    //Return description of the Venue's exits
-    public String getExitString()
-    {
-        String returnString = "Exits:";
-        Set<String> keys = exits.keySet();
-        for(String exit: keys){
-            returnString += " " + exit;
-        }
-        return returnString;
-    }
-    * */
-    
+     //Return description of the Venue's exits
+     public String getExitString()
+     {
+     String returnString = "Exits:";
+     Set<String> keys = exits.keySet();
+     for(String exit: keys){
+     returnString += " " + exit;
+     }
+     return returnString;
+     }
+     * */
     //Accessor Method
     /*
-    public Venue getExit(String direction)
-    {
-        return exits.get(direction);
+     public Venue getExit(String direction)
+     {
+     return exits.get(direction);
         
-    }
-    * /
+     }
+     * /
     
     
-    public String getLongDescription()
-    {
-        return "You are " + description + ".\n" + getExitString();
-    }
+     public String getLongDescription()
+     {
+     return "You are " + description + ".\n" + getExitString();
+     }
 
-    /**
+     /**
      * Define the exits of this room.  Every direction either leads
      * to another room or is null (no exit there).
      * @param north The north exit.
@@ -157,65 +148,67 @@ public class Venue {
      * @param south The south exit.
      * @param west The west exit.
      */
-    
     /*
-    public void setExit(String direction, Venue neighbor) 
-    {
-        uniqueAddDirection(direction);
-        exits.put(direction, neighbor);
+     public void setExit(String direction, Venue neighbor) 
+     {
+     uniqueAddDirection(direction);
+     exits.put(direction, neighbor);
         
-    }
-    */
-    
-
-    
-    public void addItem(Item item)
-    {
+     }
+     */
+    public void addItem(Item item) {
         items.add(item);
-             
+
     }
-    
+
     /**
      * Prints items in the Venue.
      */
-    public void displayItem()
-    {
-        if(items.size()==0)
-        {
-           System.out.println("No item in the venue.");
-        }
-        else
-        {
+    public void displayItem() {
+        if (items.size() == 0) {
+            System.out.println("No item in the venue.");
+        } else {
             System.out.print("Items in venue: ");
-            for(int i=0; i<items.size(); i++)
-            {
+            for (int i = 0; i < items.size(); i++) {
                 System.out.print(items.get(i).getDescription() + " ");
             }
             System.out.println();
-        }        
-    }    
-    
+        }
+    }
+
     /**
      * Checks whether item array is empty or not.
      */
-    public boolean hasItem()
-    {
-        if(items.size()==0)
-        {
-           return false;
-        }
-        else
-        {
+    public boolean isEmpty() {
+        if (items.size() == 0) {
             return true;
-        }
-        
-    }
-    
-    public boolean equals(Venue venue1, Venue venue2){
-        if((venue1.px == venue2.px)&&(venue1.py == venue2.py)){
-           return true; 
-        }
-        else
+        } else {
             return false;
+        }
+
+    }
+/*
+    public Item hasItem(String item) {
+        Item myItem = new Item();
+        for (items.getD) {
+            if (item1.getDescription().equalsIgnoreCase(item)) {
+                myItem = item1;
+                return item1;
+
+            } 
+            
+
+    }
+        return null;
+    }
+    *
+   */
+
+    public boolean equals(Venue venue1, Venue venue2) {
+        if ((venue1.px == venue2.px) && (venue1.py == venue2.py)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

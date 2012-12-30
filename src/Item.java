@@ -1,24 +1,31 @@
 
 /**
- *Item Class
+ * -----------------------------Brighton Nights------------------------------
  * 
- * @author Murat Menevse
- * @version 1.0
+ * This main class is for defining variables of Items in general.
+ * Each item has energy, cost and description value.
+ * 
+ * @author  Murat Menevse
+ * @version 2.0 / 30.12.2012
  */
 public class Item
 {
-    // instance variables - replace the example below with your own
     private int energy;
     private int cost;
     private String description;
 
-    public Item()
-    {
+    /*
+     * Empty Constructor
+     */
+    public Item(){
     }
     
     
     /**
      * Constructor for objects of class Item
+     * @param description 
+     * @param cost
+     * @param energy  
      */
     public Item(String description, int energy, int cost)
     {
@@ -28,23 +35,39 @@ public class Item
         
     }
     
-    //Copy constructor
+
+    /**
+     * Copy Constructor
+     * @param original
+     */
     public Item(Item original) {
         energy = original.energy;
         cost = original.cost;
         description = original.description;
     }
     
+    /**
+     * Getter Method
+     * @return cost which is an integer
+     */
     public int getCost()
     {
         return cost;
     }
     
+    /**
+     * Getter Method
+     * @return description which is a String 
+     */
     public String getDescription()
     {
         return description;
     }
     
+    /**
+     * Getter Method
+     * @return energy which is an integer
+     */
     public int getEnergy()
     {
         return energy;

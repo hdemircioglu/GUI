@@ -23,9 +23,17 @@ public class Venue {
     private ArrayList<Item> items;
     private String[] stringItemList;
 
+    /**
+     *
+     */
     public Venue() {
     }
 
+    /**
+     *
+     * @param labelVenue
+     * @param description
+     */
     public Venue(JLabel labelVenue, String description) {
         this.px = labelVenue.getX();
         this.py = labelVenue.getY();
@@ -38,6 +46,10 @@ public class Venue {
 
     }
 
+    /**
+     *
+     * @param another
+     */
     public Venue(Venue another) {
         this.px = another.labelVenue.getX();
         this.py = another.labelVenue.getY();
@@ -47,6 +59,10 @@ public class Venue {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public String[] stringItemArray() {
         int j = 0;
         int i = items.size();
@@ -59,102 +75,116 @@ public class Venue {
         return stringItemList;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPx() {
         return px;
     }
 
+    /**
+     *
+     * @param px
+     */
     public void setPx(int px) {
         this.px = px;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPy() {
         return py;
     }
 
+    /**
+     *
+     * @param py
+     */
     public void setPy(int py) {
         this.py = py;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getHeight() {
         return height;
     }
 
+    /**
+     *
+     * @param height
+     */
     public void setHeight(int height) {
         this.height = height;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getWidth() {
         return width;
     }
 
+    /**
+     *
+     * @param width
+     */
     public void setWidth(int width) {
         this.width = width;
     }
 
+    /**
+     *
+     * @return
+     */
     public JLabel getLabelVenue() {
         return labelVenue;
     }
 
+    /**
+     *
+     * @param labelVenue
+     */
     public void setLabelVenue(JLabel labelVenue) {
         this.labelVenue = labelVenue;
     }
     private JLabel labelVenue;
 
+    /**
+     *
+     * @return
+     */
     public String getDescription() {
         return description;
 
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Item> getItems() {
         return items;
     }
 
+    /**
+     *
+     * @param items
+     */
     public void setItems(ArrayList<Item> items) {
         this.items = items;
     }
 
-    /*
-     //Return description of the Venue's exits
-     public String getExitString()
-     {
-     String returnString = "Exits:";
-     Set<String> keys = exits.keySet();
-     for(String exit: keys){
-     returnString += " " + exit;
-     }
-     return returnString;
-     }
-     * */
-    //Accessor Method
-    /*
-     public Venue getExit(String direction)
-     {
-     return exits.get(direction);
-        
-     }
-     * /
-    
-    
-     public String getLongDescription()
-     {
-     return "You are " + description + ".\n" + getExitString();
-     }
 
-     /**
-     * Define the exits of this room.  Every direction either leads
-     * to another room or is null (no exit there).
-     * @param north The north exit.
-     * @param east The east east.
-     * @param south The south exit.
-     * @param west The west exit.
-     */
-    /*
-     public void setExit(String direction, Venue neighbor) 
-     {
-     uniqueAddDirection(direction);
-     exits.put(direction, neighbor);
-        
-     }
+    /**
+     *
+     * @param item
      */
     public void addItem(Item item) {
         items.add(item);
@@ -178,6 +208,7 @@ public class Venue {
 
     /**
      * Checks whether item array is empty or not.
+     * @return 
      */
     public boolean isEmpty() {
         if (items.size() == 0) {
@@ -187,23 +218,13 @@ public class Venue {
         }
 
     }
-/*
-    public Item hasItem(String item) {
-        Item myItem = new Item();
-        for (items.getD) {
-            if (item1.getDescription().equalsIgnoreCase(item)) {
-                myItem = item1;
-                return item1;
 
-            } 
-            
-
-    }
-        return null;
-    }
-    *
-   */
-
+    /**
+     *
+     * @param venue1
+     * @param venue2
+     * @return
+     */
     public boolean equals(Venue venue1, Venue venue2) {
         if ((venue1.px == venue2.px) && (venue1.py == venue2.py)) {
             return true;

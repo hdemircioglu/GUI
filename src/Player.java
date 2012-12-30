@@ -1,4 +1,15 @@
 
+/**
+ * -----------------------------Brighton Nights------------------------------
+ * 
+ * This main class is for defining variables of Players. It extends Thread Class
+ * to overwrite the run() function. Player Object's location is also set in
+ * this class.
+ * 
+ * @author  Murat Menevse
+ * @version 2.0 / 30.12.2012
+ */
+
 import javax.swing.JLabel;
 
 
@@ -22,80 +33,149 @@ public class Player extends Thread{
     
     private static Player myPlayer;
     
-    public Player(Player player)
-    {
+    /**
+     *
+     * @param player
+     */
+    public Player(Player player){
         this.myPlayer = player;
         
     }
     
+    /**
+     *
+     * @param px
+     * @param py
+     * @param speed
+     * @param playerLabel
+     */
     public Player(int px, int py, int speed, JLabel playerLabel) {
         this.speed = speed;
         this.px = playerLabel.getX();
         this.py = playerLabel.getY();
-        this.width = playerLabel.getWidth(); 
-        this.height = playerLabel.getHeight();
+        this.width = playerLabel.WIDTH;
+        this.height = playerLabel.HEIGHT;           
         this.playerLabel = playerLabel;
         this.playerEnergy = 100;
         this.playerMoney = 30;
         
     }
 
+    /**
+     * Getter Method
+     * @return playerEnergy which is an integer value.
+     */
     public int getPlayerEnergy() {
         return playerEnergy;
     }
 
+    /**
+     * Setter Method
+     * @param playerEnergy
+     */
     public void setPlayerEnergy(int playerEnergy) {
         this.playerEnergy = playerEnergy;
     }
 
+    /**
+     * Getter Method
+     * @return
+     */
     public int getPlayerMoney() {
         return playerMoney;
     }
 
+    /**
+     * Setter Method
+     * @param money
+     */
     public void setPlayerMoney(int money) {
         this.playerMoney = money;
     }
     
+    /**
+     * Getter Method
+     * @return
+     */
     public int getWidth() {
         return width;
     }
 
+    /**
+     * Setter Method
+     * @param width
+     */
     public void setWidth(int width) {
         this.width = width;
     }
 
+    /**
+     * Getter Method
+     * @return
+     */
     public int getHeight() {
         return height;
     }
 
+    /**
+     * Setter Method
+     * @param height
+     */
     public void setHeight(int height) {
         this.height = height;
     }
 
+    /**
+     * Getter Method
+     * @return
+     */
     public int getSpeed() {
         return speed;
     }
 
+    /**
+     * Setter Method
+     * @param speed
+     */
     public void setSpeed(int speed) {
         this.speed = speed;
     }
 
+    /**
+     * Getter Method
+     * @return
+     */
     public JLabel getPlayerLabel() {
         return playerLabel;
     }
 
+    /**
+     * Setter Method
+     * @param playerLabel
+     */
     public void setPlayerLabel(JLabel playerLabel) {
         this.playerLabel = playerLabel;
     }
 
+    /**
+     * Getter Method
+     * @return
+     */
     public int getPx() {
         return this.px;
     }
 
+    /**
+     * Getter Method
+     * @return
+     */
     public int getPy() {
         return this.py;
     }
 
+    /**
+     * Moves object's location to up.
+     */
     public void moveUp() {
         if ((py - speed) > 0) {
             py -= speed;
@@ -105,6 +185,9 @@ public class Player extends Thread{
         playerLabel.setLocation(px, py);
     }
 
+    /**
+     *Moves object's location to down.
+     */
     public void moveDown() {
         if ((py + speed) < 768) {
             py += speed;
@@ -114,6 +197,9 @@ public class Player extends Thread{
         playerLabel.setLocation(px, py);
     }
 
+    /**
+     * Moves object's location to left.
+     */
     public void moveLeft() {
         if ((px - speed) > 0) {
             px -= speed;
@@ -124,6 +210,9 @@ public class Player extends Thread{
         playerLabel.setLocation(px, py);
     }
 
+    /**
+     *Moves object's location to right.
+     */
     public void moveRight() {
         if ((px + speed) < 1024) {
             px += speed;
@@ -132,6 +221,10 @@ public class Player extends Thread{
         }
         playerLabel.setLocation(px, py);
     }
+    
+    /**
+     * Thread's run function. It moves player smoothly on the screen.
+     */
     public void run() {
         running = true;
         while (running) {
@@ -152,7 +245,7 @@ public class Player extends Thread{
 
 
             try {
-                Thread.sleep(1000);
+                Thread.sleep(800);
             } catch (InterruptedException ex) {
             }
 
@@ -160,7 +253,12 @@ public class Player extends Thread{
         }
     }
     
-     public String spendMoney(int cost)
+    /*
+     * @param cost of the item that player bought
+     * @return String that prints the Player's Money
+     * 
+     */
+    public String spendMoney(int cost)
     {
         if(playerMoney<cost)
         {
@@ -173,7 +271,11 @@ public class Player extends Thread{
         }
     }
      
-     public String loseEnergy(){
+     /**
+     * loseEnergy() Decreases Player's Energy.
+     * @return String text.
+     */
+    public String loseEnergy(){
         playerEnergy = playerEnergy-20;
         if(playerEnergy<=0)
         {
@@ -188,6 +290,12 @@ public class Player extends Thread{
         
     }
     
+    /**
+     * boostEnergy() increases Player's Energy
+     * 
+     * @param energy
+     * @return String text.
+     */
     public String boostEnergy(int energy)
     {
         int maxEnergy=100;
@@ -206,9 +314,11 @@ public class Player extends Thread{
     }
     
 
+    /**
+     * Setting running to false ends the loop in run()
+     */
     public void quit() {       
-        running = false;  // Setting running to false ends the loop in run()
-        // IUn case the thread is waiting. . .
+        running = false;  
         interrupt();
     }
 }

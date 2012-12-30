@@ -1,28 +1,43 @@
 
-import java.awt.Rectangle;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
+ * -----------------------------Brighton Nights------------------------------ 
+ * This class is for checking whether two object intersects or not.
+ * It has one important method which is called intersectDetection(Venue venue,
+ * Player player)
  *
- * @author muratmenevse
- */
+ *
+ * @author Murat Menevse
+ * @version 1.0 / 30.12.2012
+**/
+
+import java.awt.Rectangle;
+
+
 public class Intersection extends Thread{
     
-    private Venue copyVenue1, copyVenu2 = null;
+    private Venue copyVenue1 = null;
     private boolean flag2 = true;
-    private MainMenu menu;
     
+    /**
+     *Empty Constructor
+     */
     public Intersection(){
         
         
     }
     
+    /**
+     *intersectDetection() takes two object one is from Venue Class other is 
+     * from Player Class. For each object two different Rectangle are created.
+     * Rectangle Classes intersects() method returns true if two rectangles
+     * intersect.
+     * 
+     * @param venue
+     * @param player
+     * 
+     * @return a boolean result
+     * If there is intersection it returns true, otherwise it returns false.
+     */
     public boolean intersectDetection(Venue venue, Player player){
         boolean flag;
         
@@ -53,18 +68,13 @@ public class Intersection extends Thread{
             if(!flag&&!flag2){              
                 System.out.println("Intersect is working");
                 copyVenue1 = new Venue(venue);
-                flag2 = true;
-                
+                flag2 = true;            
             }
             else{
                 
-                //System.out.println("Daha once geldin");
+                //System.out.println("You came here before");
             } 
-            return true;
-                
-            
-            
-            
+            return true;         
         }
         else{
             flag = false;

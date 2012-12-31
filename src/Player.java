@@ -2,7 +2,7 @@
 /**
  * -----------------------------Brighton Nights------------------------------
  * 
- * This main class is for defining variables of Players. It extends Thread Class
+ * This class is for defining variables of Players. It extends Thread Class
  * to overwrite the run() function. Player Object's location is also set in
  * this class.
  * 

@@ -1,17 +1,17 @@
 
-import javax.swing.JLabel;
-import java.util.HashMap;
-import java.util.Set;
-import java.util.ArrayList;
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
- *
- * @author muratmenevse
+ * -----------------------------Brighton Nights------------------------------
+ * 
+ * This class is for defining variables of Venues. 
+ * 
+ * @author  Murat Menevse
+ * @version 2.0 / 30.12.2012
  */
+
+import java.util.ArrayList;
+import javax.swing.JLabel;
+
+
 public class Venue {
 
     private int px;
@@ -19,18 +19,19 @@ public class Venue {
     private int height;
     private int width;
     private String description;
+    private JLabel labelVenue;
     //private HashMap<String, Venue> exits;
     private ArrayList<Item> items;
     private String[] stringItemList;
 
     /**
-     *
+     * Empty Constructor
      */
     public Venue() {
     }
 
     /**
-     *
+     * Constructor
      * @param labelVenue
      * @param description
      */
@@ -47,7 +48,7 @@ public class Venue {
     }
 
     /**
-     *
+     * Copy Constructor
      * @param another
      */
     public Venue(Venue another) {
@@ -60,15 +61,16 @@ public class Venue {
     }
 
     /**
-     *
-     * @return
+     * stringItemArray() method gets the Item for the Venue and adds description
+     * of items in a array.
+     * 
+     * @return String[]
      */
     public String[] stringItemArray() {
         int j = 0;
         int i = items.size();
         stringItemList = new String[i];
         for (Item item : items) {
-
             stringItemList[j] = item.getDescription();
             j++;
         }
@@ -76,31 +78,35 @@ public class Venue {
     }
 
     /**
-     *
-     * @return
+     * Getter Method
+     * Return x location of Venue.
+     * 
+     * @return px which is an integer
      */
     public int getPx() {
         return px;
     }
 
     /**
-     *
-     * @param px
+     * Setter Method
+     * @param px integer
      */
     public void setPx(int px) {
         this.px = px;
     }
 
     /**
-     *
-     * @return
+     * Getter Method
+     * Return y location of Venue.
+     * 
+     * @return py which is an integer.
      */
     public int getPy() {
         return py;
     }
 
     /**
-     *
+     * Setter Method
      * @param py
      */
     public void setPy(int py) {
@@ -108,15 +114,15 @@ public class Venue {
     }
 
     /**
-     *
-     * @return
+     * Getter Method
+     * @return height integer.
      */
     public int getHeight() {
         return height;
     }
 
     /**
-     *
+     * Setter Method
      * @param height
      */
     public void setHeight(int height) {
@@ -124,15 +130,15 @@ public class Venue {
     }
 
     /**
-     *
-     * @return
+     * Getter Method
+     * @return width which is integer.
      */
     public int getWidth() {
         return width;
     }
 
     /**
-     *
+     * Setter Method
      * @param width
      */
     public void setWidth(int width) {
@@ -140,24 +146,23 @@ public class Venue {
     }
 
     /**
-     *
-     * @return
+     * Getter Method
+     * @return label of Venue.
      */
     public JLabel getLabelVenue() {
         return labelVenue;
     }
 
     /**
-     *
+     * Setter Method
      * @param labelVenue
      */
     public void setLabelVenue(JLabel labelVenue) {
         this.labelVenue = labelVenue;
     }
-    private JLabel labelVenue;
-
+    
     /**
-     *
+     * Getter Method
      * @return
      */
     public String getDescription() {
@@ -166,7 +171,7 @@ public class Venue {
     }
 
     /**
-     *
+     * Getter Method
      * @return
      */
     public ArrayList<Item> getItems() {
@@ -174,13 +179,12 @@ public class Venue {
     }
 
     /**
-     *
+     * Setter Method
      * @param items
      */
     public void setItems(ArrayList<Item> items) {
         this.items = items;
     }
-
 
     /**
      *
@@ -211,7 +215,7 @@ public class Venue {
      * @return 
      */
     public boolean isEmpty() {
-        if (items.size() == 0) {
+        if (items.isEmpty()) {
             return true;
         } else {
             return false;

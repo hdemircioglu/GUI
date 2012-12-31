@@ -2,7 +2,7 @@
 /**
  * -----------------------------Brighton Nights------------------------------
  * 
- * This main class is for defining variables of Items in general.
+ * This class is for defining variables of Items in general.
  * Each item has energy, cost and description value.
  * 
  * @author  Murat Menevse

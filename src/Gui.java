@@ -317,7 +317,7 @@ public class Gui extends JFrame implements KeyListener {
         pierLabel.setBounds(700, 435, 120, 120);
 
         player = new JLabel(new ImageIcon("adamDurgun.gif"));
-        player.setBounds(100, 200, 30, 41);
+        player.setBounds(100, 150, 30, 41);
         playerObj = new Player(100, 150, 0, player);
         player1 = new Player(playerObj);
 
